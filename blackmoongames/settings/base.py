@@ -39,6 +39,8 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 INSTALLED_APPS = [
     "home",
     "search",
+    "navbar",
+    "landing",
 
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",

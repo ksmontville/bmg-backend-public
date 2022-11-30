@@ -9,16 +9,8 @@ from wagtail.images.api.fields import ImageRenditionField
 class HomePage(Page):
     page_description = "Home page for Black Moon Games."
 
-    hero_text = RichTextField(blank=True)
-    sub_text = RichTextField(blank=True)
-    hero_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    nav_brand = models.ForeignKey(
+    banner_text = RichTextField(features=['h1'], blank=True, null=True)
+    banner_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
@@ -27,16 +19,12 @@ class HomePage(Page):
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel('hero_text'),
-        FieldPanel('sub_text'),
-        FieldPanel('hero_image'),
-        FieldPanel('nav_brand'),
+        FieldPanel('banner_text'),
+        FieldPanel('banner_image'),
     ]
 
     api_fields = [
-        APIField('hero_text'),
-        APIField('sub_text'),
-        APIField('image', serializer=ImageRenditionField('fill-200x200', source='hero_image')),
-        APIField('logo', serializer=ImageRenditionField('fill-24x24', source='nav_brand'))
+        APIField('banner_text'),
+        APIField('banner_img', serializer=ImageRenditionField('fill-48x48', source='banner_image')),
     ]
 
