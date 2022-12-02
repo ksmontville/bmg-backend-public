@@ -4,12 +4,13 @@ from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
 from wagtail.images.api.fields import ImageRenditionField
+from home.models import ALL_FEATURES
 
 
 class Navbar(Page):
     page_description = "Tools for editing the navbar."
 
-    nav_text = RichTextField(blank=True)
+    nav_text = RichTextField(features=ALL_FEATURES, blank=True)
     nav_btn = models.ForeignKey(
         'wagtailimages.Image',
         blank=True,

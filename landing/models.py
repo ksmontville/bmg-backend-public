@@ -4,17 +4,15 @@ from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
 from wagtail.images.api.fields import ImageRenditionField
-
-features = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold', 'italic', 'ol', 'ul', 'hr', 'link',
-            'document-link', 'image', 'embed', 'superscript', 'subscript', 'strikethrough', 'blockquote']
+from home.models import ALL_FEATURES
 
 
 class LandingPage(Page):
     page_description = "Use this page to convert users."
 
-    hero_text = RichTextField(features=features, blank=True)
-    sub_text_one = RichTextField(features=features, blank=True)
-    sub_text_two = RichTextField(features=features, blank=True)
+    hero_text = RichTextField(features=ALL_FEATURES, blank=True)
+    sub_text_one = RichTextField(features=ALL_FEATURES, blank=True)
+    sub_text_two = RichTextField(features=ALL_FEATURES, blank=True)
     hero_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
