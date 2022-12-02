@@ -12,7 +12,7 @@ class Banner(Page):
 
     banner_text = RichTextField(features=ALL_FEATURES, blank=True, null=True)
     banner_subtext = RichTextField(features=ALL_FEATURES, blank=True, null=True)
-    banner_link = RichTextField(features=ALL_FEATURES, blank=True, null=True)
+    banner_link = models.CharField(max_length=100, blank=True, null=True)
     banner_image = models.ForeignKey(
         'wagtailimages.Image',
         blank=True,
