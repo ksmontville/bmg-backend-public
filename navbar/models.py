@@ -35,5 +35,5 @@ class Navbar(Page):
     api_fields = [
         APIField('nav_text'),
         APIField('button', serializer=ImageRenditionField('fill-12x12', source='nav_button')),
-        APIField('image', serializer=ImageRenditionField('fill-64x64', source='nav_image')),
+        APIField('image'),
     ]
