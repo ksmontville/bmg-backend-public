@@ -29,7 +29,7 @@ class Navbar(Page):
     content_panels = Page.content_panels + [
         FieldPanel('nav_text'),
         FieldPanel('nav_button'),
-        FieldPanel('nav_image'),
+        FieldPanel('logo'),
     ]
 
     api_fields = [
