@@ -18,7 +18,7 @@ class Navbar(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    nav_image = models.ForeignKey(
+    logo = models.ForeignKey(
         'wagtailimages.Image',
         blank=True,
         null=True,
@@ -35,5 +35,5 @@ class Navbar(Page):
     api_fields = [
         APIField('nav_text'),
         APIField('button', serializer=ImageRenditionField('fill-12x12', source='nav_button')),
-        APIField('image'),
+        APIField('logo'),
     ]
