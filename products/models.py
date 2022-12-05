@@ -23,16 +23,40 @@ class ImageChooserBlock(DefaultImageChooserBlock):
 class NewProducts(Page):
     page_description = "Write about new products and display images here."
 
-    product = StreamField([
+    product_1 = StreamField([
         ('description', blocks.RichTextBlock(features=ALL_FEATURES, required=False, blank=True, null=True)),
         ('image', ImageChooserBlock('item_1_image')),
         ('url', blocks.URLBlock(required=False, null=True, help_text="Link to store page here (optional)."))
     ], use_json_field=True, blank=True, null=True)
 
+    product_2 = StreamField([
+        ('description', blocks.RichTextBlock(features=ALL_FEATURES, required=False, blank=True, null=True)),
+        ('image', ImageChooserBlock('item_2_image')),
+        ('url', blocks.URLBlock(required=False, null=True, help_text="Link to store page here (optional)."))
+    ], use_json_field=True, blank=True, null=True)
+
+    product_3 = StreamField([
+        ('description', blocks.RichTextBlock(features=ALL_FEATURES, required=False, blank=True, null=True)),
+        ('image', ImageChooserBlock('item_3_image')),
+        ('url', blocks.URLBlock(required=False, null=True, help_text="Link to store page here (optional)."))
+    ], use_json_field=True, blank=True, null=True)
+
+    product_4 = StreamField([
+        ('description', blocks.RichTextBlock(features=ALL_FEATURES, required=False, blank=True, null=True)),
+        ('image', ImageChooserBlock('item_4_image')),
+        ('url', blocks.URLBlock(required=False, null=True, help_text="Link to store page here (optional)."))
+    ], use_json_field=True, blank=True, null=True)
+
     content_panels = Page.content_panels + [
-        FieldPanel('product'),
+        FieldPanel('product_1'),
+        FieldPanel('product_2'),
+        FieldPanel('product_3'),
+        FieldPanel('product_4'),
     ]
 
     api_fields = [
-        APIField('product'),
+        APIField('product_1'),
+        APIField('product_2'),
+        APIField('product_3'),
+        APIField('product_4'),
     ]
