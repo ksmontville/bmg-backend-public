@@ -17,50 +17,24 @@ class ImageChooserBlock(DefaultImageChooserBlock):
                 'title': value.title,
                 'large': value.get_rendition('width-1000').attrs_dict,
                 'thumbnail': value.get_rendition('fill-128x128').attrs_dict,
-                'source': value.get_rendition('fill-128x128').url,
-                'alt': value.get_rendition('fill-128x128').alt
             }
 
 
 class NewProducts(Page):
-    page_description = "Write about new products and display images here."
+    page_description = "Describe about new products and upload images here."
 
-    new_product = StreamField([
+    new_products = StreamField([
         ('product', blocks.StructBlock([
             ('description', blocks.RichTextBlock(features=ALL_FEATURES, required=False, blank=True, null=True)),
             ('image', ImageChooserBlock(required=False, blank=True, null=True)),
             ('url', blocks.URLBlock(required=False, blank=True, null=False)),
         ])),
     ], use_json_field=True, blank=True, null=False)
-    #
-    # product_2 = StreamField([
-    #     ('description', blocks.RichTextBlock(features=ALL_FEATURES, required=False, blank=True, null=True)),
-    #     ('image', ImageChooserBlock('item_2_image')),
-    #     ('url', blocks.URLBlock(required=False, null=True, help_text="Link to store page here (optional)."))
-    # ], use_json_field=True, blank=True, null=True)
-    #
-    # product_3 = StreamField([
-    #     ('description', blocks.RichTextBlock(features=ALL_FEATURES, required=False, blank=True, null=True)),
-    #     ('image', ImageChooserBlock('item_3_image')),
-    #     ('url', blocks.URLBlock(required=False, null=True, help_text="Link to store page here (optional)."))
-    # ], use_json_field=True, blank=True, null=True)
-    #
-    # product_4 = StreamField([
-    #     ('description', blocks.RichTextBlock(features=ALL_FEATURES, required=False, blank=True, null=True)),
-    #     ('image', ImageChooserBlock('item_4_image')),
-    #     ('url', blocks.URLBlock(required=False, null=True, help_text="Link to store page here (optional)."))
-    # ], use_json_field=True, blank=True, null=True)
 
     content_panels = Page.content_panels + [
-        FieldPanel('new_product'),
-        # FieldPanel('product_2'),
-        # FieldPanel('product_3'),
-        # FieldPanel('product_4'),
+        FieldPanel('new_products'),
     ]
 
     api_fields = [
-        APIField('new_product'),
-        # APIField('product_2'),
-        # APIField('product_3'),
-        # APIField('product_4'),
+        APIField('new_products'),
     ]
