@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "navbar",
     "landing",
     "banner",
+    "products",
 
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
