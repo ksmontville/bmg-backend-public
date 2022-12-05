@@ -17,6 +17,8 @@ class ImageChooserBlock(DefaultImageChooserBlock):
                 'title': value.title,
                 'large': value.get_rendition('width-1000').attrs_dict,
                 'thumbnail': value.get_rendition('fill-128x128').attrs_dict,
+                'url': value.get_rendition('fill-128x128').url,
+                'alt': value.get_rendition('fill-128x128').alt
             }
 
 
