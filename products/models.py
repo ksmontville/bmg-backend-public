@@ -6,20 +6,20 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
 from wagtail.images.api.fields import ImageRenditionField
 from home.models import ALL_FEATURES
-from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.blocks import ImageChooserBlock as DefaultImageChooserBlock
 
 
-# class ImageChooserBlock(DefaultImageChooserBlock):
-#     def get_api_representation(self, value, context=None):
-#         if value:
-#             return {
-#                 'id': value.id,
-#                 'title': value.title,
-#                 'large': value.get_rendition('width-1000').attrs_dict,
-#                 'thumbnail': value.get_rendition('fill-128x128').attrs_dict,
-#                 'url': value.get_rendition('fill-128x128').url,
-#                 'alt': value.get_rendition('fill-128x128').alt
-#             }
+class ImageChooserBlock(DefaultImageChooserBlock):
+    def get_api_representation(self, value, context=None):
+        if value:
+            return {
+                'id': value.id,
+                'title': value.title,
+                'large': value.get_rendition('width-1000').attrs_dict,
+                'thumbnail': value.get_rendition('fill-128x128').attrs_dict,
+                'source': value.get_rendition('fill-128x128').url,
+                'alt': value.get_rendition('fill-128x128').alt
+            }
 
 
 class NewProducts(Page):
