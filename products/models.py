@@ -28,6 +28,7 @@ class NewProducts(Page):
             ('description', blocks.RichTextBlock(features=ALL_FEATURES, required=False, blank=True, null=True)),
             ('image', ImageChooserBlock(required=False, blank=True, null=True)),
             ('url', blocks.URLBlock(required=False, blank=True, null=False)),
+            ('alt', blocks.CharBlock(required=True))
         ])),
     ], use_json_field=True, blank=True, null=False)
 
