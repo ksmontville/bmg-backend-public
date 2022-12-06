@@ -25,6 +25,7 @@ class NewProducts(Page):
 
     new_products = StreamField([
         ('product', blocks.StructBlock([
+            ('name', blocks.RichTextBlock(required=True)),
             ('description', blocks.RichTextBlock(features=ALL_FEATURES, required=False, blank=True, null=True)),
             ('image', ImageChooserBlock(required=False, blank=True, null=True)),
             ('url', blocks.URLBlock(required=False, blank=True, null=False)),
