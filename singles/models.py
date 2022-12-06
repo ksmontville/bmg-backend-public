@@ -14,7 +14,7 @@ class SinglesPage(HeadlessMixin, Page):
 
     header = RichTextField(features=ALL_FEATURES, blank=True, null=True)
     text = RichTextField(features=ALL_FEATURES, blank=True, null=True)
-    sub_text = models.TextField(blank=True, null=True)
+    sub_text = RichTextField(features=ALL_FEATURES, blank=True, null=True)
     logo = models.ForeignKey(
         'wagtailimages.Image',
         blank=True,
