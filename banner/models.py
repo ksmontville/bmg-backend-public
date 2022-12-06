@@ -8,7 +8,7 @@ from home.models import ALL_FEATURES
 from wagtail_headless_preview.models import HeadlessMixin
 
 
-class Banner(Page, HeadlessMixin):
+class Banner(HeadlessMixin, Page):
     page_description = "Sticky banner for announcements and advertisements."
 
     banner_text = RichTextField(features=ALL_FEATURES, blank=True, null=True)

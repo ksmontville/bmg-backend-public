@@ -8,7 +8,7 @@ from home.models import ALL_FEATURES
 from wagtail_headless_preview.models import HeadlessMixin
 
 
-class LandingPage(Page, HeadlessMixin):
+class LandingPage(HeadlessMixin, Page):
     page_description = "Use this page to convert users."
 
     hero_text = RichTextField(features=ALL_FEATURES, blank=True)

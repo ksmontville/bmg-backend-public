@@ -8,7 +8,7 @@ from home.models import ALL_FEATURES
 from wagtail_headless_preview.models import HeadlessMixin
 
 
-class Navbar(Page, HeadlessMixin):
+class Navbar(HeadlessMixin, Page):
     page_description = "Tools for editing the navbar."
 
     nav_text = RichTextField(features=ALL_FEATURES, blank=True)

@@ -21,7 +21,7 @@ class ImageChooserBlock(DefaultImageChooserBlock):
             }
 
 
-class NewProducts(Page, HeadlessMixin):
+class NewProducts(HeadlessMixin, Page):
     page_description = "Describe about new products and upload images here."
 
     new_products = StreamField([

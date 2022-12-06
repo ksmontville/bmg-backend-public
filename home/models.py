@@ -10,7 +10,7 @@ ALL_FEATURES = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold', 'italic', 'ol', 'ul'
                 'document-link', 'image', 'embed', 'superscript', 'subscript', 'strikethrough', 'blockquote']
 
 
-class HomePage(Page, HeadlessMixin):
+class HomePage(HeadlessMixin, Page):
     page_description = "Home page for Black Moon Games."
 
     banner_text = RichTextField(features=ALL_FEATURES, blank=True, null=True)
