@@ -4,12 +4,13 @@ from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
 from wagtail.images.api.fields import ImageRenditionField
+from wagtail_headless_preview.models import HeadlessMixin
 
 ALL_FEATURES = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold', 'italic', 'ol', 'ul', 'hr', 'link',
                 'document-link', 'image', 'embed', 'superscript', 'subscript', 'strikethrough', 'blockquote']
 
 
-class HomePage(Page):
+class HomePage(Page, HeadlessMixin):
     page_description = "Home page for Black Moon Games."
 
     banner_text = RichTextField(features=ALL_FEATURES, blank=True, null=True)

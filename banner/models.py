@@ -5,9 +5,10 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
 from wagtail.images.api.fields import ImageRenditionField
 from home.models import ALL_FEATURES
+from wagtail_headless_preview.models import HeadlessMixin
 
 
-class Banner(Page):
+class Banner(Page, HeadlessMixin):
     page_description = "Sticky banner for announcements and advertisements."
 
     banner_text = RichTextField(features=ALL_FEATURES, blank=True, null=True)

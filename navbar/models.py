@@ -5,9 +5,10 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
 from wagtail.images.api.fields import ImageRenditionField
 from home.models import ALL_FEATURES
+from wagtail_headless_preview.models import HeadlessMixin
 
 
-class Navbar(Page):
+class Navbar(Page, HeadlessMixin):
     page_description = "Tools for editing the navbar."
 
     nav_text = RichTextField(features=ALL_FEATURES, blank=True)

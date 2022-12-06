@@ -7,6 +7,7 @@ from wagtail.api import APIField
 from wagtail.images.api.fields import ImageRenditionField
 from home.models import ALL_FEATURES
 from wagtail.images.blocks import ImageChooserBlock as DefaultImageChooserBlock
+from wagtail_headless_preview.models import HeadlessMixin
 
 
 class ImageChooserBlock(DefaultImageChooserBlock):
@@ -20,7 +21,7 @@ class ImageChooserBlock(DefaultImageChooserBlock):
             }
 
 
-class NewProducts(Page):
+class NewProducts(Page, HeadlessMixin):
     page_description = "Describe about new products and upload images here."
 
     new_products = StreamField([

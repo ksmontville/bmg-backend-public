@@ -34,6 +34,15 @@ AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
+WAGTAIL_HEADLESS_PREVIEW = {
+    "CLIENT_URLS": {
+        'default': 'https://gregarious-valkyrie-3805b8.netlify.app'
+    },
+    "SERVE_BASE_URL": None,
+    "REDIRECT_ON_PREVIEW": False,
+    "ENFORCE_TRAILING_SLASH": True,
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -70,6 +79,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "storages",
     "environ",
+    "wagtail_headless_preview",
 ]
 
 MIDDLEWARE = [
