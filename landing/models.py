@@ -33,5 +33,6 @@ class LandingPage(HeadlessMixin, Page):
         APIField('hero_text'),
         APIField('sub_text_one'),
         APIField('sub_text_two'),
-        APIField('image', serializer=ImageRenditionField('fill-200x200', source='hero_image')),
+        APIField('hero_image'),
+        # APIField('image', serializer=ImageRenditionField('fill-256x256', source='hero_image')),
     ]
