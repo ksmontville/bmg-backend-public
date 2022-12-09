@@ -41,7 +41,7 @@ class Event(Page):
     start_time = models.TimeField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
     end_time = models.TimeField(null=True, blank=True)
-    recurrence = models.CharField(max_length=50, choices=recurrence_choices, default='DAILY', null=True)
+    recurrence = models.CharField(max_length=50, choices=recurrence_choices, default='NONE', null=True)
     store_link = models.URLField(max_length=150, null=True, blank=True)
 
     content_panels = Page.content_panels + [
