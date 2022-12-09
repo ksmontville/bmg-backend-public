@@ -28,6 +28,12 @@ recurrence_choices = [
 
 
 class Event(Page):
+    page_description = """
+    Use this page to publish events to a public Google Calendar.
+    Use the store link to bring users to the appropriate store page when clicking on an event on the website.
+    NOTE: Deleting these pages will not delete the event from Google Calendar (functionality coming soon).
+    """
+
     name = models.CharField(max_length=50, null=True, blank=True)
     location = models.CharField(max_length=50, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
