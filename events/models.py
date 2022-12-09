@@ -36,6 +36,11 @@ class Event(models.Model):
     class Meta:
         verbose_name_plural = 'Events'
 
+
+    api_fields = [
+        APIField('store_link')
+    ]
+
     def save(self, **kwargs):
         """
         Custom save() method for overriding CharField behavior.
