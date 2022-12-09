@@ -20,6 +20,7 @@ SCOPES = ['https://www.googleapis.com/auth/calendar']
 CALENDAR_ID = '3bfcac92ab15cf839d111cfa132668bb18c22473b8f19a318f5fb22a178c56a1@group.calendar.google.com'
 
 recurrence_choices = [
+    ('NONE', 'NONE'),
     ('DAILY', 'DAILY'),
     ('WEEKLY', 'WEEKLY'),
     ('YEARLY', 'YEARLY')
@@ -35,7 +36,6 @@ class Event(Page):
     end_date = models.DateField(null=True, blank=True)
     end_time = models.TimeField(null=True, blank=True)
     recurrence = models.CharField(max_length=50, choices=recurrence_choices, default='DAILY', null=True)
-    google_link = models.CharField(max_length=150, null=True, blank=True)
     store_link = models.URLField(max_length=150, null=True, blank=True)
 
     content_panels = Page.content_panels + [
@@ -47,7 +47,6 @@ class Event(Page):
         FieldPanel('end_date'),
         FieldPanel('end_time'),
         FieldPanel('recurrence'),
-        FieldPanel('google_link'),
         FieldPanel('store_link'),
     ]
 
@@ -60,17 +59,8 @@ class Event(Page):
         APIField('end_date'),
         APIField('end_time'),
         APIField('recurrence'),
-        APIField('google_link'),
         APIField('store_link'),
-        APIField('store_link')
     ]
-
-    # def save(self, **kwargs):
-    #     """
-    #     Custom save() method for overriding CharField behavior.
-    #     """
-    #     self.create_event()
-    #     super(Event, self).save(**kwargs)
 
     def create_event(self):
         """Returns Google API OAuth2 credentials."""
@@ -92,24 +82,49 @@ class Event(Page):
             with open('token.json', 'w') as token:
                 token.write(creds.to_json())
 
-        new_event = {
-            'summary': self.title,
-            'location': self.location,
-            'description': self.description,
-            'start': {
-                'dateTime': datetime.datetime.combine(
-                    self.start_date, self.start_time).isoformat(),
-                'timeZone': 'America/New_York',
-            },
-            'end': {
-                'dateTime': datetime.datetime.combine(
-                    self.end_date, self.end_time).isoformat(),
-                'timeZone': 'America/New_York',
-            },
-            'recurrence': [
-                f'RRULE:FREQ={self.recurrence}'
-            ],
-        }
+        if self.recurrence == 'NONE':
+            new_event = {
+                'summary': self.title,
+                'location': self.location,
+                'description': self.description,
+                'start': {
+                    'dateTime': datetime.datetime.combine(
+                        self.start_date, self.start_time).isoformat(),
+                    'timeZone': 'America/New_York',
+                },
+                'end': {
+                    'dateTime': datetime.datetime.combine(
+                        self.end_date, self.end_time).isoformat(),
+                    'timeZone': 'America/New_York',
+                },
+                'source': {
+                    'title': 'Black Moon Games',
+                    'url': self.store_link,
+                },
+            }
+        else:
+            new_event = {
+                'summary': self.title,
+                'location': self.location,
+                'description': self.description,
+                'start': {
+                    'dateTime': datetime.datetime.combine(
+                        self.start_date, self.start_time).isoformat(),
+                    'timeZone': 'America/New_York',
+                },
+                'end': {
+                    'dateTime': datetime.datetime.combine(
+                        self.end_date, self.end_time).isoformat(),
+                    'timeZone': 'America/New_York',
+                },
+                'recurrence': [
+                    f'RRULE:FREQ={self.recurrence}'
+                ],
+                'source': {
+                    'title': 'Black Moon Games',
+                    'url': self.store_link,
+                },
+            }
 
         service = build('calendar', 'v3', credentials=creds)
 
