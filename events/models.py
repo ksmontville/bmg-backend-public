@@ -30,7 +30,7 @@ recurrence_choices = [
 class Event(Page):
     page_description = """
     Use this page to publish events to a public Google Calendar.
-    Use the store link to bring users to the appropriate store page when clicking on an event on the website.
+    Use the store link to bring users to the appropriate store page when clicking on an event on the website (optional).
     NOTE: Deleting these pages will not delete the event from Google Calendar (functionality coming soon).
     """
 
@@ -42,7 +42,7 @@ class Event(Page):
     end_date = models.DateField(null=True, blank=True)
     end_time = models.TimeField(null=True, blank=True)
     recurrence = models.CharField(max_length=50, choices=recurrence_choices, default='NONE', null=True)
-    store_link = models.URLField(max_length=150, null=True, blank=True)
+    store_link = models.URLField(max_length=200, null=True, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('name'),
@@ -103,10 +103,6 @@ class Event(Page):
                         self.end_date, self.end_time).isoformat(),
                     'timeZone': 'America/New_York',
                 },
-                'source': {
-                    'title': 'Black Moon Games',
-                    'url': self.store_link,
-                },
             }
         else:
             new_event = {
@@ -126,10 +122,6 @@ class Event(Page):
                 'recurrence': [
                     f'RRULE:FREQ={self.recurrence}'
                 ],
-                'source': {
-                    'title': 'Black Moon Games',
-                    'url': self.store_link,
-                },
             }
 
         service = build('calendar', 'v3', credentials=creds)
@@ -137,8 +129,6 @@ class Event(Page):
         service.events().insert(
             calendarId=f'{CALENDAR_ID}',
             body=new_event).execute()
-
-        print('Event created: %s' % (new_event.get(f'{self.store_link}')))
 
 
 def event_created(sender, instance, **kwargs):
