@@ -38,7 +38,7 @@ class AboutPage(HeadlessMixin, Page):
     api_fields = [
         APIField('page_header'),
         APIField('location'),
-        APIField('hour'),
+        APIField('hours'),
         APIField('map_widget_url'),
         APIField('about_header'),
         APIField('about_text'),
