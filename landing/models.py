@@ -14,6 +14,7 @@ class LandingPage(HeadlessMixin, Page):
     hero_text = RichTextField(features=ALL_FEATURES, blank=True)
     sub_text_one = RichTextField(features=ALL_FEATURES, blank=True)
     sub_text_two = RichTextField(features=ALL_FEATURES, blank=True)
+    whats_new_text = RichTextField(features=ALL_FEATURES, blank=True)
     hero_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -26,6 +27,7 @@ class LandingPage(HeadlessMixin, Page):
         FieldPanel('hero_text'),
         FieldPanel('sub_text_one'),
         FieldPanel('sub_text_two'),
+        FieldPanel('whats_new_text'),
         FieldPanel('hero_image'),
     ]
 
@@ -33,6 +35,6 @@ class LandingPage(HeadlessMixin, Page):
         APIField('hero_text'),
         APIField('sub_text_one'),
         APIField('sub_text_two'),
+        APIField('whats_new_text'),
         APIField('hero_image'),
-        # APIField('image', serializer=ImageRenditionField('fill-256x256', source='hero_image')),
     ]
