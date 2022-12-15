@@ -23,6 +23,7 @@ class LandingPage(HeadlessMixin, Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    hero_image_description = models.CharField(max_length=100, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('hero_text'),
@@ -31,6 +32,7 @@ class LandingPage(HeadlessMixin, Page):
         FieldPanel('whats_new_header'),
         FieldPanel('whats_new_text'),
         FieldPanel('hero_image'),
+        FieldPanel('hero_image_description'),
     ]
 
     api_fields = [
@@ -40,4 +42,5 @@ class LandingPage(HeadlessMixin, Page):
         APIField('whats_new_header'),
         APIField('whats_new_text'),
         APIField('hero_image'),
+        APIField('hero_image_description'),
     ]
