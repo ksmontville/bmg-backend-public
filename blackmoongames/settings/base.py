@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "products",
     "singles",
     "events",
+    "about",
 
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
