@@ -3,8 +3,10 @@ from __future__ import print_function
 from django.db import models
 from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel
+from wagtail.fields import RichTextField
 from wagtail.api import APIField
 from wagtail.signals import page_published
+from home.models import ALL_FEATURES
 
 # Google functionality imports
 import datetime
@@ -36,7 +38,7 @@ class Event(Page):
 
     name = models.CharField(max_length=50, null=True, blank=True)
     location = models.CharField(max_length=50, null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
+    description = RichTextField(features=ALL_FEATURES, null=True, blank=True)
     start_date = models.DateField()
     start_time = models.TimeField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
