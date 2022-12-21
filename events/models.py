@@ -36,15 +36,15 @@ class Event(Page):
     NOTE: Deleting these pages will not delete the event from Google Calendar (functionality coming soon).
     """
 
-    name = models.CharField(max_length=50, null=True, blank=True)
-    location = models.CharField(max_length=50, null=True, blank=True)
+    name = models.CharField(max_length=64, null=True, blank=True)
+    location = models.CharField(max_length=64, null=True, blank=True)
     description = RichTextField(features=ALL_FEATURES, null=True, blank=True)
     start_date = models.DateField()
     start_time = models.TimeField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
     end_time = models.TimeField(null=True, blank=True)
-    recurrence = models.CharField(max_length=50, choices=recurrence_choices, default='NONE', null=True)
-    store_link = models.URLField(max_length=200, null=True, blank=True)
+    recurrence = models.CharField(max_length=64, choices=recurrence_choices, default='NONE', null=True)
+    store_link = models.URLField(max_length=256, null=True, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('name'),
