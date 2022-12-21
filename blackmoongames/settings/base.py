@@ -38,9 +38,9 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 WAGTAIL_HEADLESS_PREVIEW = {
     "CLIENT_URLS": {
-        "default": "https://gregarious-valkyrie-3805b8.netlify.app",
+        "default": "https://black-moon-games.com",
     },
-    "SERVE_BASE_URL": "https://gregarious-valkyrie-3805b8.netlify.app",
+    "SERVE_BASE_URL": "https://black-moon-games.com",
     "REDIRECT_ON_PREVIEW": False,
     "ENFORCE_TRAILING_SLASH": True,
 }
