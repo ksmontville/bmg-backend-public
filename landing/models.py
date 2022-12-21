@@ -16,6 +16,7 @@ class LandingPage(HeadlessMixin, Page):
     sub_text_two = RichTextField(features=ALL_FEATURES, blank=True)
     whats_new_header = RichTextField(features=ALL_FEATURES, blank=True)
     whats_new_text = RichTextField(features=ALL_FEATURES, blank=True)
+    whats_new_link = models.URLField(max_length=255, blank=True, null=True)
     hero_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -31,6 +32,7 @@ class LandingPage(HeadlessMixin, Page):
         FieldPanel('sub_text_two'),
         FieldPanel('whats_new_header'),
         FieldPanel('whats_new_text'),
+        FieldPanel('whats_new_link'),
         FieldPanel('hero_image'),
         FieldPanel('hero_image_description'),
     ]
@@ -41,6 +43,7 @@ class LandingPage(HeadlessMixin, Page):
         APIField('sub_text_two'),
         APIField('whats_new_header'),
         APIField('whats_new_text'),
+        APIField('whats_new_link'),
         APIField('hero_image'),
         APIField('hero_image_description'),
     ]
