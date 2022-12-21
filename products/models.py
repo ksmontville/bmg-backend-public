@@ -17,7 +17,7 @@ class ImageChooserBlock(DefaultImageChooserBlock):
                 'id': value.id,
                 'title': value.title,
                 'large': value.get_rendition('width-1000').attrs_dict,
-                'thumbnail': value.get_rendition('fill-128x128').attrs_dict,
+                'thumbnail': value.get_rendition('fill-256x256').attrs_dict,
             }
 
 
@@ -27,7 +27,7 @@ class NewProducts(HeadlessMixin, Page):
     new_products = StreamField([
         ('product', blocks.StructBlock([
             ('name', blocks.RichTextBlock(required=True)),
-            ('description', blocks.RichTextBlock(features=ALL_FEATURES, required=False, blank=True, null=True)),
+            ('description', blocks.RichTextBlock(max_length=256, features=ALL_FEATURES, required=False, blank=True, null=True)),
             ('image', ImageChooserBlock(required=False, blank=True, null=True)),
             ('link', blocks.CharBlock(required=False, blank=True, null=False)),
             ('alt', blocks.CharBlock(required=True))
