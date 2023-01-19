@@ -20,7 +20,6 @@ environ.Env.read_env()
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -136,10 +135,10 @@ WSGI_APPLICATION = "blackmoongames.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd22epggssafos2',
-        'USER': 'klfcfedkduwedy',
-        'PASSWORD': '59156618dd0b6b5be2d3ec128a6ea5ff75093ed240234876c46ab3a67ade280b',
-        'HOST': 'ec2-34-231-63-30.compute-1.amazonaws.com',
+        'NAME': env(DATABASE_NAME),
+        'USER': env(DATABASE_USER),
+        'PASSWORD': env(DATABASE_PASSWORD),
+        'HOST': env(DATABASE_HOST),
         'PORT': 5432,
     }
 }
@@ -218,3 +217,6 @@ WAGTAILSEARCH_BACKENDS = {
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = "http://example.com"
+
+import dj_database_url
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
