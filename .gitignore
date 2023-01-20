@@ -1,5 +1,2 @@
 blackmoongames/settings/.env
 .env
-token.json
-credentials.json
-Procfile
