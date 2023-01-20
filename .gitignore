@@ -1,2 +1,6 @@
 blackmoongames/settings/.env
 .env
+credentials.json
+data.json
+datadump.json
+token.json
