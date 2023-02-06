@@ -14,7 +14,7 @@ class AboutPage(HeadlessMixin, Page):
     page_header = RichTextField(features=ALL_FEATURES, blank=True)
     location = RichTextField(features=ALL_FEATURES, blank=True)
     hours = RichTextField(features=ALL_FEATURES, blank=True)
-    map_widget_url = models.URLField(max_length=256, blank=True)
+    map_widget_url = models.URLField(max_length=1028, blank=True)
     about_header = RichTextField(features=ALL_FEATURES, blank=True)
     about_text = RichTextField(features=ALL_FEATURES, blank=True)
     about_image = models.ForeignKey(
